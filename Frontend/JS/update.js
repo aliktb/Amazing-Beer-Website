@@ -8,6 +8,8 @@ let findBeer = document.querySelector('#idBtn');
 let beerIdField = document.querySelector('#idBtn');
 let updateMenu = document.querySelector('#updateMenu')
 
+let currentId;
+
 const getById = (id) => {
     console.log(id);
     fetch(`url/${id}`).then((response) => {
@@ -27,12 +29,13 @@ const getById = (id) => {
 
 findBeer.addEventListener('click', () => {
     updateMenu.style = "display:block";
-    getById(beerIdField.value);
+    currentId = beerIdField.value
+    getById(currentId);
 })
 
-const postBeer = (data) => {
+const putBeer = (data) => {
     console.log(data);
-    fetch(`Post Request`, {
+    fetch(`Put Request${currentId}`, {
         method: 'PUT',
         headers: {
             "Content-type": "application/json"
@@ -53,5 +56,5 @@ updateBeer.addEventListener('click', function () {
     };
 
     console.log(beer);
-    postBeer(beer);
+    putBeer(beer);
 })
