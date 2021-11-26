@@ -1,9 +1,9 @@
 const router = require("express").Router();
 
-const { beerImport } = require("../persistence/beer.js");
+const { Beer } = require("../persistence/beer.js");
 
 router.post("/create", (req, res) => {
-  const newBeer = new beerImport(req.body);
+  const newBeer = new Beer(req.body);
   console.log(req.body);
   console.log(newBeer);
 
@@ -19,7 +19,7 @@ router.post("/create", (req, res) => {
 });
 
 router.get("/getAll", (req, res) => {
-  beerImport.find((error, beerList) => {
+  Beer.find((error, beerList) => {
     if (error) {
       console.log(`error: ${error}`);
     }
@@ -29,7 +29,7 @@ router.get("/getAll", (req, res) => {
 
 router.get("/getById/:id", (req, res) => {
   console.log(req.params.id);
-  beerImport.findById(req.params.id, (error, result) => {
+  Beer.findById(req.params.id, (error, result) => {
     if (error) {
       console.log(`error: ${error}`);
     }
@@ -43,7 +43,7 @@ router.put("/updateById/:id", (req, res) => {
 
   console.log(req.body);
 
-  beerImport.findByIdAndUpdate(id, req.body, { new: true }, (error, result) => {
+  Beer.findByIdAndUpdate(id, req.body, { new: true }, (error, result) => {
     if (error) {
       console.log(`There was an error: ${error}`);
     }
@@ -54,7 +54,7 @@ router.put("/updateById/:id", (req, res) => {
 router.delete("/deleteById/:id", (req, res) => {
   const id = req.params.id;
   console.log(id);
-  beerImport.findByIdAndDelete(id, (error) => {
+  Beer.findByIdAndDelete(id, (error) => {
     if (error) {
       console.log(`error: ${error}`);
     }
