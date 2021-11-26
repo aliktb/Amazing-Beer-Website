@@ -8,7 +8,7 @@ let beerId = document.querySelector('#beerId');
 console.log(getAll.innerHTML);
 
 const getBeers = () => {
-    fetch(`mongodb+srv://root:root@cluster0.ilyqd.mongodb.net/Beer/beerRoutes/getAll`).then((response) => {
+    fetch(`http://localhost:5015/beerRoutes/getAll`).then((response) => {
         if (response.status !== 200) {
             console.error(response.status);
             return;
@@ -23,7 +23,7 @@ const getBeers = () => {
 };
 
 const getBeerId = (id) => {
-    fetch(`mongodb+srv://root:root@cluster0.ilyqd.mongodb.net/Beer/beerRoutes/getById/${id}`).then((response) => {
+    fetch(`http://localhost:5015/beerRoutes/getById/${id}`).then((response) => {
         if (response.status !== 200) {
             console.error(response.status);
             return;
@@ -39,7 +39,7 @@ const getBeerId = (id) => {
 
 const deleteBeer = (id) => {
     console.log(id);
-    fetch(`mongodb+srv://root:root@cluster0.ilyqd.mongodb.net/Beer/beerRoutes/deleteById/${id}`, {
+    fetch(`http://localhost:5015/beerRoutes/deleteById/${id}`, {
         method: "DELETE",
         headers: {
             "contentType": "application/JSON"
