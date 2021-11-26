@@ -10,6 +10,9 @@ const beerSchema = new Schema({
     type: String,
     required: true,
   },
+  tagline: {
+    type: String,
+  },
   description: {
     type: String,
     maxlength: 150,
