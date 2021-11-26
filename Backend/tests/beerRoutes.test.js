@@ -33,7 +33,9 @@ describe("basic testing", function () {
         expect(err).to.be.null;
         expect(response).to.have.status(201);
         expect(response.text).to.be.a("String");
-        expect(response.text).to.equal(`${testBeer.name} saved to database!`);
+        expect(response.text).to.equal(
+          `New beer saved to database. Beer is: ${testBeer.name}`
+        );
         done();
       });
   });
@@ -57,5 +59,10 @@ describe("basic testing", function () {
         });
         done();
       });
+  });
+  after(function (done) {
+    Beer.deleteMany({}).then(() => {
+      done();
+    });
   });
 });

@@ -10,7 +10,9 @@ router.post("/create", (req, res) => {
   newBeer
     .save()
     .then((result) => {
-      res.status(201).send(`New beer saved to database. Beer is: ${result}`);
+      res
+        .status(201)
+        .send(`New beer saved to database. Beer is: ${result.name}`);
     })
     .catch((error) => {
       console.log(`error :( : ${error}`);
