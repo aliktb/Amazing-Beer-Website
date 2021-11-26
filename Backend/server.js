@@ -1,6 +1,7 @@
 const testDB = false;
 
 const express = require("express");
+const cors = require("cors");
 
 if (testDB == true) {
   dbURI = "testBeer";
@@ -16,6 +17,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 const errorLogger = (err, req, res, next) => {
   console.log(err.stack);
