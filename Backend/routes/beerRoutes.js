@@ -7,7 +7,7 @@ router.post("/create", (req, res) => {
   console.log(req.body);
   console.log(newBeer);
 
-  car
+  newBeer
     .save()
     .then((result) => {
       res.status(201).send(`New beer saved to database. Beer is: ${result}`);
@@ -54,7 +54,7 @@ router.put("/updateById/:id", (req, res) => {
 router.delete("/deleteById/:id", (req, res) => {
   const id = req.params.id;
   console.log(id);
-  Car.findByIdAndDelete(id, (error) => {
+  beerImport.findByIdAndDelete(id, (error) => {
     if (error) {
       console.log(`error: ${error}`);
     }
