@@ -6,6 +6,7 @@ let imageField = document.querySelector('#newImage');
 let updateBeer = document.querySelector('#updateBeer');
 let findBeer = document.querySelector('#idBtn');
 let beerIdField = document.querySelector('#idBtn');
+let updateMenu = document.querySelector('#')
 
 const getById = (id) => {
     console.log(id);
@@ -25,6 +26,7 @@ const getById = (id) => {
 }
 
 findBeer.addEventListener('click', () => {
+    updateMenu.style = "display:block";
     getById(beerIdField.value);
 })
 
@@ -35,6 +37,7 @@ const postBeer = (data) => {
         headers: {
             "Content-type": "application/json"
         },
+        body: JSON.stringify(data)
     }).then((response) => {
         console.log(response);
     })
