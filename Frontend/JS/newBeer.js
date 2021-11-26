@@ -7,7 +7,7 @@ let createBeer = document.querySelector('#submitBeer');
 
 const postBeer = (data) => {
     console.log(data);
-    fetch(`mongodb + srv://root:root@cluster0.ilyqd.mongodb.net/beerRoutes/create`, {
+    fetch(`mongodb + srv://root:root@cluster0.ilyqd.mongodb.net/Beer/beerRoutes/create`, {
         method: 'POST',
         headers: {
             "Content-type": "application/json"
