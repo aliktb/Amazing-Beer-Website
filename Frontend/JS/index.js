@@ -65,9 +65,10 @@ const clearDiv = () => {
 
 const createData = (data) => {
 
+
+
     let cardDiv = document.createElement('div');
     let name = document.createElement('h2');
-    let tagline = document.createElement('h3');
     let description = document.createElement('p');
     let divContainer = document.createElement('div');
     let image = document.createElement('img');
@@ -75,7 +76,7 @@ const createData = (data) => {
     let updateBtn = document.createElement('button');
 
     name.innerText = data.name;
-    tagline.innerText = data.tagline;
+
     description.innerText = data.description;
     image.src = data.image_url;
     image.style.width = "100px";
@@ -96,7 +97,11 @@ const createData = (data) => {
 
     divContainer.classList = "container";
     divContainer.appendChild(name);
-    divContainer.appendChild(tagline);
+    if (data.tagline != undefined) {
+        let tagline = document.createElement('h3');
+        tagline.innerText = data.tagline;
+        divContainer.appendChild(tagline);
+    }
     divContainer.appendChild(description);
     divContainer.appendChild(image);
     divContainer.appendChild(deleteBtn);
