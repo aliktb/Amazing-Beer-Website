@@ -17,3 +17,24 @@ const testBeer = {
   alcohol_free: false,
   type: "gasoline",
 };
+
+describe("basic testing", function () {
+  it("testing the /create route", function (done) {
+    chai
+      .request(server)
+      .post("/beerRoutes/create")
+      .send(testBeer)
+      .end((err, response) => {
+        if (err) {
+          console.log("Something is wrong");
+          done(err);
+        }
+        console.log(response.text);
+        expect(err).to.be.null;
+        expect(response).to.have.status(201);
+        expect(response.text).to.be.a("String");
+        expect(response.text).to.equal(`${testBook.title} saved to database!`);
+        done();
+      });
+  });
+});
