@@ -33,7 +33,28 @@ describe("basic testing", function () {
         expect(err).to.be.null;
         expect(response).to.have.status(201);
         expect(response.text).to.be.a("String");
-        expect(response.text).to.equal(`${testBook.title} saved to database!`);
+        expect(response.text).to.equal(`${testBeer.name} saved to database!`);
+        done();
+      });
+  });
+  it("testing the /getall Route", function (done) {
+    chai
+      .request(server)
+      .get("/beerRoutes/getAll")
+      .end((err, response) => {
+        if (err) {
+          console.log("Something is wrong");
+          done(err);
+        }
+        const body = response.body;
+        console.log(body);
+        expect(response).to.have.status(200);
+        expect(body).to.not.be.null;
+
+        body.map((beer) => {
+          expect(beer).to.contain.keys("name");
+          expect(beer).to.be.a("Object");
+        });
         done();
       });
   });
