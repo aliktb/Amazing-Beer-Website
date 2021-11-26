@@ -7,53 +7,65 @@ let brewedField = document.querySelector('#newBrewed');
 let imageField = document.querySelector('#newImage');
 let updateBeer = document.querySelector('#updateBeer');
 let findBeer = document.querySelector('#idBtn');
-let beerIdField = document.querySelector('#idBtn');
+let idInput = document.querySelector('#idInput');
+let updateBtn = document.querySelector('#submitBeer');
 let updateMenu = document.querySelector('#updateMenu')
-
-let currentId;
-if (localStorage.getItem('idToUpdate')) {
-    currentId = localStorage.getItem('idToUpdate');
-    localStorage.clear();
-}
 
 const getById = (id) => {
     console.log(id);
-    fetch(`url/${id}`).then((response) => {
+    fetch(`mongodb+srv://root:root@cluster0.ilyqd.mongodb.net/beerRoutes/getById/${id}`).then((response) => {
         if (response != 200) {
             console.log(response);
-        } else {
-            response.json().then((data) => {
-                nameField.value = data.name;
-                tagField.value = data.tagline;
-                descField.value = data.description;
-                brewedField.value = data.brewed_date;
-                imageField.value = data.image_url;
-            })
         }
+        response.json().then((data) => {
+            console.log(data);
+            for (let beer of data) {
+                console.log(beer);
+                nameField.value = beer.name;
+                tagField.value = beer.tagline;
+                descField.value = beer.description;
+                brewedField.value = beer.brewed_date;
+                imageField.value = beer.image_url;
+            }
+        })
+
     })
 }
 
+let currentId;
+console.log(localStorage.getItem('idToUpdate'))
+if (localStorage.getItem('idToUpdate')) {
+    currentId = localStorage.getItem('idToUpdate');
+    updateMenu.style = "display:block";
+    getById(currentId);
+    localStorage.clear();
+}
+
+
+
 findBeer.addEventListener('click', () => {
     updateMenu.style = "display:block";
-    currentId = beerIdField.value
+    currentId = idInput.value
     getById(currentId);
 })
 
 const putBeer = (data) => {
     console.log(data);
-    fetch(`Put Request${currentId}`, {
+    fetch(`mongodb+srv://root:root@cluster0.ilyqd.mongodb.net/beerRoutes/updateById/${id}`, {
         method: 'PUT',
         headers: {
             "Content-type": "application/json"
         },
         body: JSON.stringify(data)
     }).then((response) => {
+
         console.log(response);
     })
 };
 
-updateBeer.addEventListener('click', function () {
+updateBtn.addEventListener('click', function () {
     let beer = {
+        id: currentId,
         name: nameField.value,
         tagline: tagField.value,
         description: descField.value,

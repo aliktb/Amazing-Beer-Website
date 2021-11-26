@@ -7,19 +7,20 @@ let createBeer = document.querySelector('#submitBeer');
 
 const postBeer = (data) => {
     console.log(data);
-    // fetch(`Post Request`, {
-    //     method: 'POST',
-    //     headers: {
-    //         "Content-type": "application/json"
-    //     },
-    // }).then((response) => {
-    //     console.log(response);
-    // })
+    fetch(`mongodb + srv://root:root@cluster0.ilyqd.mongodb.net/beerRoutes/create`, {
+        method: 'POST',
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).then((response) => {
+        console.log(response);
+    })
 };
 
-createBeer.addEventListener('click', function() {
+createBeer.addEventListener('click', function () {
     let beer = {
-        name : nameField.value,
+        name: nameField.value,
         tagline: tagField.value,
         description: descField.value,
         brewed_date: brewedField.value,
