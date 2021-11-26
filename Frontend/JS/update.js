@@ -6,7 +6,7 @@ let imageField = document.querySelector('#newImage');
 let updateBeer = document.querySelector('#updateBeer');
 let findBeer = document.querySelector('#idBtn');
 let beerIdField = document.querySelector('#idBtn');
-let updateMenu = document.querySelector('#')
+let updateMenu = document.querySelector('#updateMenu')
 
 const getById = (id) => {
     console.log(id);
