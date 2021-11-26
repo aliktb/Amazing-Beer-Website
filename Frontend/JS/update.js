@@ -1,3 +1,5 @@
+'use strict'
+
 let nameField = document.querySelector('#newName');
 let tagField = document.querySelector('#newTagline');
 let descField = document.querySelector('#newDesc');
@@ -9,6 +11,10 @@ let beerIdField = document.querySelector('#idBtn');
 let updateMenu = document.querySelector('#updateMenu')
 
 let currentId;
+if (localStorage.getItem('idToUpdate')) {
+    currentId = localStorage.getItem('idToUpdate');
+    localStorage.clear();
+}
 
 const getById = (id) => {
     console.log(id);
