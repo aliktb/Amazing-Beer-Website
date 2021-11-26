@@ -1,3 +1,5 @@
+const testDB = true;
+
 const express = require("express");
 
 if (testDB == true) {
@@ -9,6 +11,9 @@ if (testDB == true) {
 const beerRoutes = require("./routes/beerRoutes.js");
 
 const mongoose = require("mongoose");
+
+// Instantiating the app
+const app = express();
 
 app.use(express.json());
 
