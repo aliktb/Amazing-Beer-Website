@@ -1,5 +1,11 @@
 const express = require("express");
 
+if (testDB == true) {
+  dbURI = "testBeer";
+} else {
+  dbURI = "Beer";
+}
+
 const beerRoutes = require("./routes/beerRoutes.js");
 
 const mongoose = require("mongoose");
