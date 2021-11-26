@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "The backend of the Amazing Beer Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliktb/Amazing-Beer-Website.git"
+  },
+  "author": "Sam & Ali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aliktb/Amazing-Beer-Website/issues"
+  },
+  "homepage": "https://github.com/aliktb/Amazing-Beer-Website#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13",
+    "nodemon": "^2.0.15"
+  }
+}
