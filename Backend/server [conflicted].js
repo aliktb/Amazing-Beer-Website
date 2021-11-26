@@ -1,6 +1,6 @@
 const express = require("express");
 
-const beerRoutes = require("../routes/beerRoutes.js");
+const beerRoutes = require("./routes/beerRoutes.js");
 
 const mongoose = require("mongoose");
 
@@ -12,7 +12,7 @@ const errorLogger = (err, req, res, next) => {
 };
 
 mongoose.connect(
-  `mongodb://localhost:27017/${dbURI}`,
+  `mongodb+srv://root:root@cluster0.ilyqd.mongodb.net/${dbURI}`,
   { useNewUrlParser: true },
   (error) => {
     if (error) {
