@@ -13,7 +13,7 @@ let updateMenu = document.querySelector('#updateMenu')
 
 const getById = (id) => {
     console.log(id);
-    fetch(`mongodb+srv://root:root@cluster0.ilyqd.mongodb.net/beerRoutes/getById/${id}`).then((response) => {
+    fetch(`mongodb+srv://root:root@cluster0.ilyqd.mongodb.net/Beer/beerRoutes/getById/${id}`).then((response) => {
         if (response != 200) {
             console.log(response);
         }
@@ -51,7 +51,7 @@ findBeer.addEventListener('click', () => {
 
 const putBeer = (data) => {
     console.log(data);
-    fetch(`mongodb+srv://root:root@cluster0.ilyqd.mongodb.net/beerRoutes/updateById/${id}`, {
+    fetch(`mongodb+srv://root:root@cluster0.ilyqd.mongodb.net/Beer/beerRoutes/updateById/${id}`, {
         method: 'PUT',
         headers: {
             "Content-type": "application/json"
