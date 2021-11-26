@@ -70,7 +70,6 @@ const putBeer = (data) => {
 
 updateBtn.addEventListener('click', function () {
     let beer = {
-        id: currentId,
         name: nameField.value,
         tagline: tagField.value,
         description: descField.value,
