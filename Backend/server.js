@@ -1,9 +1,9 @@
 const express = require("express");
 
 if (testDB == true) {
-  dbURI = "testBrewery";
+  dbURI = "testBeer";
 } else {
-  dbURI = "Brewery";
+  dbURI = "Beer";
 }
 
 const beerRoutes = require("./routes/beerRoutes.js");
