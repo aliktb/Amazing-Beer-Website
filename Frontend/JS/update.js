@@ -19,14 +19,19 @@ const getById = (id) => {
         }
         response.json().then((data) => {
             console.log(data);
-            for (let beer of data) {
-                console.log(beer);
-                nameField.value = beer.name;
-                tagField.value = beer.tagline;
-                descField.value = beer.description;
-                brewedField.value = beer.brewed_date;
-                imageField.value = beer.image_url;
-            }
+            // for (let beer of data) {
+            //     console.log(beer);
+            //     nameField.value = beer.name;
+            //     tagField.value = beer.tagline;
+            //     descField.value = beer.description;
+            //     brewedField.value = beer.brewed_date;
+            //     imageField.value = beer.image_url;
+            // }
+            nameField.value = data.name;
+            tagField.value = data.tagline;
+            descField.value = data.description;
+            brewedField.value = data.brewed_date;
+            imageField.value = data.image_url;
         })
 
     })
