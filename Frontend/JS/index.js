@@ -9,13 +9,13 @@ console.log(getAll.innerHTML);
 
 const getBeers = () => {
     fetch(`https://api.punkapi.com/v2/beers`).then((response) => {
-        if(response.status !== 200){
+        if (response.status !== 200) {
             console.error(response.status);
             return;
         }
         response.json().then((data) => {
             clearDiv();
-            for(let object of data){
+            for (let object of data) {
                 createData(object);
             };
         });
@@ -24,7 +24,7 @@ const getBeers = () => {
 
 const getBeerId = (id) => {
     fetch(`https://api.punkapi.com/v2/beers/${id}`).then((response) => {
-        if(response.status !== 200){
+        if (response.status !== 200) {
             console.error(response.status);
             return;
         }
@@ -34,7 +34,7 @@ const getBeerId = (id) => {
             createData(data[0]);
         });
     });
-    
+
 }
 
 const deleteBeer = (id) => {
@@ -53,7 +53,8 @@ const clearDiv = () => {
 }
 
 const createData = (data) => {
-    
+
+    let cardDiv = document.createElement('div');
     let name = document.createElement('h2');
     let tagline = document.createElement('h3');
     let description = document.createElement('p');
@@ -65,13 +66,15 @@ const createData = (data) => {
     tagline.innerText = data.tagline;
     description.innerText = data.description;
     image.src = data.image_url;
-    image.style.width = "100px"; 
+    image.style.width = "100px";
     deleteBtn.classList = "btn btn-danger mb-3"
     deleteBtn.innerText = "Delete Beer"
 
-    deleteBtn.addEventListener('click', function(){
+    deleteBtn.addEventListener('click', function () {
         deleteBeer(data.id);
     })
+
+    cardDiv.classList = "card w-50 mb-5";
 
     divContainer.classList = "container";
     divContainer.appendChild(name);
@@ -80,11 +83,13 @@ const createData = (data) => {
     divContainer.appendChild(image);
     divContainer.appendChild(deleteBtn);
 
-    beerDiv.appendChild(divContainer);
+    cardDiv.appendChild(divContainer);
+
+    beerDiv.appendChild(cardDiv);
 }
 
 getAll.addEventListener('click', getBeers);
-getById.addEventListener('click', function() {
+getById.addEventListener('click', function () {
     let id = beerId.value;
     console.log(id);
     getBeerId(id);
